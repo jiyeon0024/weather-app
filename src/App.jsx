@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+const API_KEY = "058814dadf30b7b92760a5cd779a9817";
 function App() {
-  const [count, setCount] = useState(0)
+  const [cityName, setCityName] = useState("");
+  const [loading, setLoading] = useState(false);
+  function getWeather() {
+    setLoading(true);
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`
+    )
+      .then((data) => data.json())
+      .then((value) => setLoading(false))
+      .catch((error) => setLoading(false));
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="appContainer">
+        <div className="bubble"></div>
+        <main className="app">
+          <div className="searchBarWrap">
+            <input
+              onChange={(e) => setCityName(e.target.value)}
+              className="input"
+              type="text"
+              placeholder="Enter a city name"
+            />
+            <button className="btn" onClick={getWeather}>
+              Search
+            </button>
+          </div>
+
+          {loading ? (
+            <div>loading</div>
+          ) : (
+            <div className="contentWrap">
+              <p className="cityName">london</p>
+              <p className="weather">cloud</p>
+              <p className="subWeather">flw</p>
+              <img className="icon" src="" alt="" />
+              <p className="temp">18.5&deg;</p>
+              <div className="rangeBox">
+                <p className="min">
+                  <span>min</span>17.14&deg;
+                </p>
+                <p className="max">
+                  <span>max</span>19.95&deg;
+                </p>
+              </div>
+            </div>
+          )}
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

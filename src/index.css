@@ -1,69 +1,250 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
-a:hover {
-  color: #535bf2;
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 body {
-  margin: 0;
+  background: linear-gradient(to bottom, #9be2fe 0%, #67d1fb 100%);
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  color: white;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.app {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  width: 500px;
+  border-radius: 10px;
+  z-index: 1;
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+.appContainer {
+  position: relative;
+}
+.bubble {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  z-index: -10;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.searchBarWrap {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
 }
-button:hover {
-  border-color: #646cff;
+.input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 10px 20px;
+  flex: 1;
+  outline: none;
+  color: white;
+  font-size: 20px;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.input::placeholder {
+  color: white;
+  font-size: 20px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn {
+  font-size: 20px;
+  padding: 20px;
+  color: skyblue;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  outline: none;
+}
+
+.contentWrap {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.cityName,
+.weather,
+.subWeather {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cityName {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.weather,
+.subWeather {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.temp {
+  font-weight: bold;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.rangeBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.min,
+.max {
+  padding: 10px;
+  font-size: 20px;
+}
+.min span,
+.max span {
+  font-weight: bold;
+
+  display: block;
+  margin-bottom: 10px;
+}
+.min {
+  border-right: 1px solid white;
+}
+
+.icon {
 }
